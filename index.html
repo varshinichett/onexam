@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Examination</title>
+</head>
+<body>
+
+<h2>Student Login</h2>
+<input id="student" placeholder="Student Name">
+<button onclick="startExam()">Login</button>
+
+<div id="exam" style="display:none">
+    <h3>Question 1: HTML stands for?</h3>
+
+    <input type="radio" name="answer" value="wrong">
+    High Text Machine Language<br>
+
+    <input type="radio" name="answer" value="correct">
+    HyperText Markup Language<br>
+
+    <button onclick="showResult()">Submit Exam</button>
+</div>
+
+<p id="result"></p>
+
+<script>
+function startExam() {
+    let student = document.getElementById("student").value.trim();
+
+    if (student === "") {
+        alert("Enter student name");
+        return;
+    }
+
+    document.getElementById("exam").style.display = "block";
+}
+
+function showResult() {
+    let answer = document.querySelector(
+        'input[name="answer"]:checked'
+    );
+
+    if (!answer) {
+        alert("Select an answer");
+        return;
+    }
+
+    let score = answer.value === "correct" ? 1 : 0;
+
+    document.getElementById("result").innerHTML =
+        "Your score is: " + score + "/1";
+}
+</script>
+
+</body>
+</html>
